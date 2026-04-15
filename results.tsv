@@ -1,0 +1,8 @@
+commit	load_time_ms	status	description
+5006362	128.2	keep	baseline
+cd81f61	35.2	keep	remove Google Fonts, use system fonts
+935a73b	33.7	keep	resize+JPEG images, 40-92% size reduction
+7c94734	11.4	keep	move JS to end of body, decoding=async on images
+c8da459	34.3	discard	preload profile, add width/height to images (regression)
+3c113a1	31.5	discard	loading=lazy on below-fold images (regression in headless)
+2896954	32.4	discard	halve image dims to actual display size (noise)

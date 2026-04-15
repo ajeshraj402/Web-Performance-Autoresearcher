@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajesh | Open to Data & AI roles</title>
+  <meta name="description" content="Explore Ajesh's Data & AI/ML projects with real-world impact and research.">
+
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0D0E0F;
+      --white: #FFFFFF;
+      --red: #FF0D0D;
+      --gray-dark: #323336;
+      --gray-mid: #3E3F3D;
+      --gray-light: #919191;
+      --text-muted: rgba(250, 250, 247, 0.64);
+      --off-white: #F1F1F1;
+      --card-bg: #111213;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--white);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ==================== NAV ==================== */
+    nav {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: var(--gray-dark);
+      border-radius: 136px;
+      padding: 8px 12px 8px 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+    }
+
+    .nav-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-name {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 82px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a.active {
+      background: var(--white);
+      color: #000;
+    }
+
+    .nav-links a:not(.active) {
+      color: var(--white);
+    }
+
+    .nav-links a:not(.active):hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ==================== LAYOUT ==================== */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 120px;
+      padding-bottom: 80px;
+      position: relative;
+    }
+
+    .hero-greeting {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .hero-heading {
+      font-family: 'Anton', Impact, sans-serif;
+      font-size: 80px;
+      font-weight: 400;
+      letter-spacing: -1.9px;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 28px;
+      color: var(--white);
+    }
+
+    .hero-heading .accent {
+      background: linear-gradient(to right, #FF0000, #ED6868);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .hero-tagline {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--gray-light);
+      margin-top: 8px;
+    }
+
+    .hero-blur {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    /* ==================== SECTIONS ==================== */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-heading {
+      font-family: 'Anton', Impact, sans-serif;
+      font-size: 64px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      color: var(--white);
+      margin-bottom: 48px;
+    }
+
+    /* ==================== WORK ==================== */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      will-change: transform;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .project-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-card-body {
+      padding: 20px;
+    }
+
+    .project-title {
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      color: rgb(249, 249, 246);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .project-desc {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .view-all-wrap {
+      margin-top: 8px;
+    }
+
+    .view-all-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 82px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .view-all-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: var(--white);
+    }
+
+    /* ==================== RESEARCH ==================== */
+    .papers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .paper-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .paper-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .paper-card-content {
+      flex: 1;
+    }
+
+    .paper-badge {
+      display: inline-block;
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray-light);
+      border: 1px solid var(--gray-mid);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+    }
+
+    .paper-title {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .paper-title a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .paper-title a:hover {
+      color: var(--off-white);
+    }
+
+    .paper-desc {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ==================== BLOGS ==================== */
+    #blogs .section-heading {
+      text-align: center;
+    }
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .blog-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .blog-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .blog-card-body {
+      padding: 20px;
+    }
+
+    .blog-title {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      line-height: 1.5;
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      text-align: center;
+      padding: 48px 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-color-ref {
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .footer-attr {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      color: var(--gray-light);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 900px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blogs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        font-size: 48px;
+      }
+
+      .hero-heading {
+        font-size: 52px;
+      }
+
+      main {
+        padding: 0 20px;
+      }
+
+      nav {
+        padding: 6px 10px;
+        gap: 8px;
+      }
+
+      .nav-name {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-heading {
+        font-size: 40px;
+      }
+
+      .section-heading {
+        font-size: 40px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-profile">
+      <img src="/public/images/profile.jpg" alt="Ajesh Nadar" decoding="async">
+      <span class="nav-name">Hey, I'm Ajesh Nadar</span>
+    </div>
+    <div class="nav-links">
+      <a href="#work" class="active">Work</a>
+      <a href="#research">Research</a>
+      <a href="#blogs">Blogs</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <p class="hero-greeting">Hey there! I am Ajesh Nadar</p>
+      <h1 class="hero-heading">
+        I make models less<br>
+        theoretical,<br>
+        <span class="accent">more practical</span>
+      </h1>
+      <p class="hero-tagline">Currently shaping 0→1 @ Tunk.Ai.</p>
+      <div class="hero-blur"></div>
+    </section>
+
+    <!-- Selected Work -->
+    <section id="work">
+      <h2 class="section-heading">Selected Work</h2>
+      <div class="work-grid">
+
+        <a href="https://github.com/ajeshraj402" target="_blank" rel="noopener" class="project-link">
+          <div class="project-card">
+            <img src="/public/images/project1.jpg" alt="Real-Time Sentiment Analysis on Google Cloud" decoding="async">
+            <div class="project-card-body">
+              <h3 class="project-title">Real-Time Sentiment Analysis on Google Cloud</h3>
+              <p class="project-desc">Real-time sentiment analysis pipeline for Reddit financial discussions leveraging Google Cloud Platform, NLP APIs and BigQuery for market trend insights.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://github.com/ajeshraj402" target="_blank" rel="noopener" class="project-link">
+          <div class="project-card">
+            <img src="/public/images/project2.jpg" alt="Generating Realistic Images using DDPM" decoding="async">
+            <div class="project-card-body">
+              <h3 class="project-title">Generating Realistic Images using DDPM</h3>
+              <p class="project-desc">DDPM-based generative model implementation trained on CIFAR-10 dataset for realistic image synthesis, compared against VAE and VAE-GAN baselines using PyTorch.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://github.com/ajeshraj402" target="_blank" rel="noopener" class="project-link">
+          <div class="project-card">
+            <img src="/public/images/project3.jpg" alt="Medical Documents RAG Bot" decoding="async">
+            <div class="project-card-body">
+              <h3 class="project-title">Medical Documents RAG Bot</h3>
+              <p class="project-desc">RAG-based medical PDF chatbot using Flan-T5 and FAISS for semantic search, enabling users to ask questions about medical documents with page source tracking.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="view-all-wrap">
+        <a href="https://github.com/ajeshraj402?tab=repositories" target="_blank" rel="noopener" class="view-all-btn">View all projects</a>
+      </div>
+    </section>
+
+    <!-- Research Papers -->
+    <section id="research">
+      <h2 class="section-heading">Research paper</h2>
+      <div class="papers-list">
+
+        <div class="paper-card">
+          <img src="/public/images/paper1.jpg" alt="IEEE Paper" decoding="async">
+          <div class="paper-card-content">
+            <span class="paper-badge">IEEE</span>
+            <p class="paper-title">
+              <a href="https://ieeexplore.ieee.org/abstract/document/10616304" target="_blank" rel="noopener">
+                Violence Detection using Deep Learning
+              </a>
+            </p>
+            <p class="paper-desc">DL-based violence detection system using MobileNet and BiLSTM for real-time video analysis.</p>
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <img src="/public/images/paper2.jpg" alt="IEEE Paper" decoding="async">
+          <div class="paper-card-content">
+            <span class="paper-badge">IEEE</span>
+            <p class="paper-title">
+              <a href="https://ieeexplore.ieee.org/abstract/document/10290543" target="_blank" rel="noopener">
+                Leveraging CNN and IoT for Effective E-Waste Management
+              </a>
+            </p>
+            <p class="paper-desc">IoT-enabled e-waste management system using CNN and YOLO for real-time object detection.</p>
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <img src="/public/images/arxiv.png" alt="ArXiv Paper" style="object-fit:contain;background:#fff;padding:8px;">
+          <div class="paper-card-content">
+            <span class="paper-badge">ArXiv</span>
+            <p class="paper-title">
+              <a href="https://arxiv.org/abs/2506.16649" target="_blank" rel="noopener">
+                Violence Detection using Deep Learning
+              </a>
+            </p>
+            <p class="paper-desc">IoT-based smart energy monitoring integrating blockchain billing and Prophet forecasting for secure transactions.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Blogs -->
+    <section id="blogs">
+      <h2 class="section-heading">BLogs</h2>
+      <div class="blogs-grid">
+
+        <a href="https://substack.com/home/post/p-189283402" target="_blank" rel="noopener" class="blog-link">
+          <div class="blog-card">
+            <img src="/public/images/blog1.jpg" alt="AI vs Human Validation" decoding="async">
+            <div class="blog-card-body">
+              <p class="blog-title">AI vs Human Validation: Can AI Truly Understand Emotions?</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://substack.com/home/post/p-189282337" target="_blank" rel="noopener" class="blog-link">
+          <div class="blog-card">
+            <img src="/public/images/blog2.jpg" alt="Gold Data Analysis" decoding="async">
+            <div class="blog-card-body">
+              <p class="blog-title">Gold — A Data-Driven Look at India's Obsession with Gold</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://substack.com/home/post/p-189280825" target="_blank" rel="noopener" class="blog-link">
+          <div class="blog-card">
+            <img src="/public/images/blog3.jpg" alt="From Fire to Code" decoding="async">
+            <div class="blog-card-body">
+              <p class="blog-title">From Fire to Code: Redefining the Cognitive Revolution with AI</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-color-ref">0D0E0F</p>
+    <p class="footer-attr">Made in Framer · framer.com</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        var target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    document.querySelectorAll('.project-card').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var rotateX = (e.clientY - rect.top - rect.height / 2) / 25;
+        var rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 25;
+        card.style.transform = 'perspective(1200px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    });
+
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', function () {
+      sections.forEach(function (section) {
+        var top = section.offsetTop - 120;
+        if (window.scrollY >= top && window.scrollY < top + section.offsetHeight) {
+          navLinks.forEach(function (link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + section.id);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
